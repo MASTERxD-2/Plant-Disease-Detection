@@ -16,7 +16,7 @@ model = load_model('plant_disease_model.keras')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # Set up upload folder
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Check if file is a valid image
