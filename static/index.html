@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff7b92 0%, #4f46e5 100%);
+            background-size: 400% 400%;
+            animation: gradientAnimation 6s ease infinite;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            padding: 20px;
+            width: 100%;
+        }
+        .header-content {
+            flex: 1;
+            text-align: center;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .header-content p {
+            color: #ffffff;
+            font-size: 1.25rem;
+        }
+        .form-container {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-left: 30px;
+        }
+        .form-container input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #4338ca;
+        }
+        .drops {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        .drop {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            position: absolute;
+            animation: dropAnimation 6s infinite;
+        }
+        .drop-1 {
+            top: 20px;
+            left: 10%;
+            animation-duration: 5s;
+        }
+        .drop-2 {
+            top: 40px;
+            left: 30%;
+            animation-duration: 4s;
+        }
+        .drop-3 {
+            top: 60px;
+            left: 50%;
+            animation-duration: 7s;
+        }
+        .drop-4 {
+            top: 80px;
+            left: 70%;
+            animation-duration: 6s;
+        }
+        .drop-5 {
+            top: 100px;
+            left: 90%;
+            animation-duration: 3s;
+        }
 
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes dropAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-content">
+            <h1>🌱 Plant Disease Detection</h1>
+            <p>Upload an image to detect plant diseases.</p>
+        </div>
+
+        <div class="form-container">
+            <form action="/predict" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <p>Upload an Image</p>
+                <input type="file" name="file" accept="image/*" required><br>
+                <input type="submit" value="Predict Disease"><br>
+            </form>
+        </div>
+    </div>
+
+    <span class="ml-4 flex items-start flex-col leading-none">
+        <span class="text-xs text-black-1000 mb-1">Digital Image</span>
+        <span class="title-font font-medium">Processing</span>
+      </span>
+
+    <div class="drops">
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+    </div>
+</body>
+</html>
